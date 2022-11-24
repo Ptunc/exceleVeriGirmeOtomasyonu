@@ -1,26 +1,26 @@
-import string
-import openpyxl
 from openpyxl import Workbook, load_workbook
 
 wb = load_workbook("deneme.xlsx")
 ws = wb.active
 
-print(ws["B7"].value)
-print(ws.cell(7,2).value)
-print(ws.max_row)
 
-for satir in range(6, ws.max_row):
-    for sutun in range(8,9):
-        print("")
-        if (str(ws.cell(satir,sutun).value) == "X"):
+for satir in range(5, ws.max_row):
+    for sutun in range(6,18):
+        if(str(ws.cell(satir,sutun).value) == "X"):
             a = "=+C"
             c = str(satir)
             b = a + c
-            ws.cell(satir, sutun).value = b  # type: ignore
+            ws.cell(satir, sutun).value = b
 
-        print(" | " + str(ws.cell(satir,sutun).value) + " | ",end="")
-        print()
+for satir in range(5, ws.max_row):
+    for sutun in range(29,70):
+        if(str(ws.cell(satir,sutun).value) == "X"):
+            a = "=+C"
+            c = str(satir)
+            b = a + c
+            ws.cell(satir, sutun).value = b
 
+print(ws.cell(5,7).value)
 wb.save("denemenindenemesi.xlsx")
 
 
