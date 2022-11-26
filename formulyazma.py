@@ -1,21 +1,21 @@
 from openpyxl import Workbook, load_workbook
 
 #hangi sütun aralığını değiştireceğinin verisini alan ve o sütun aralığında X gördüğü yeri istenen formülle değiştiren kod
-def anaFonk(x,y):
+def anaFonk(sutunBaslangic,sutunBitis):
 
     for satir in range(5, ws.max_row):
-        for sutun in range(x,y):
+        for sutun in range(sutunBaslangic,sutunBitis):
             if(str(ws.cell(satir,sutun).value) == "X"):
                 ws.cell(satir, sutun).value = "=+C" + str(satir)
 
 
 #belirli bir satır-sütun aralığında X gördüğü yeri değişkenleri birbirine ekleyerek istenen formülle değiştiren kod
-def ozelCarpimFonk(a,b,c,d,e):
+def ozelCarpimFonk(satirBaslangic, satirBitis,sutunBaslangic,sutunBitis,carpim):
 
-    for satir in range(a, b):
-        for sutun in range(c, d):
+    for satir in range(satirBaslangic, satirBitis):
+        for sutun in range(sutunBaslangic,sutunBitis):
             if(str(ws.cell(satir,sutun).value) == "X"):
-                ws.cell(satir, sutun).value = "=+D"+ str(satir) + "*" + e + "-E" + str(satir)
+                ws.cell(satir, sutun).value = "=+D"+ str(satir) + "*" + carpim + "-E" + str(satir)
 
 
 
