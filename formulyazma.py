@@ -1,32 +1,28 @@
 from openpyxl import Workbook, load_workbook
 
-#hangi sütun aralığını değiştireceğinin verisini alan ve o sütun aralığında X gördüğü yeri miniFonk'taki fonksiyonla değiştiren kod
+#hangi sütun aralığını değiştireceğinin verisini alan ve o sütun aralığında X gördüğü yeri istenen formülle değiştiren kod
 def anaFonk(x,y):
 
     for satir in range(5, ws.max_row):
         for sutun in range(x,y):
             if(str(ws.cell(satir,sutun).value) == "X"):
-                ws.cell(satir, sutun).value = miniFonk("=+C", str(satir))
-                print(ws.cell(satir, sutun).value) 
+                ws.cell(satir, sutun).value = "=+C" + str(satir)
 
-def miniFonk(a,b):
-    return a + b
 
-#belirli bir satır-sütun aralığında X gördüğü yeri miniFonk'taki fonksiyonları birbirine ekleyerek değiştiren kod
+#belirli bir satır-sütun aralığında X gördüğü yeri değişkenleri birbirine ekleyerek istenen formülle değiştiren kod
 def ozelCarpimFonk(a,b,c,d,e):
 
     for satir in range(a, b):
         for sutun in range(c, d):
             if(str(ws.cell(satir,sutun).value) == "X"):
-                ws.cell(satir, sutun).value = miniFonk("=+D", str(satir)) + "*" + e + miniFonk("-E", str(satir))
-                print(ws.cell(satir, sutun).value) 
+                ws.cell(satir, sutun).value = "=+D"+ str(satir) + "*" + e + "-E" + str(satir)
 
 
 
 wb = load_workbook("deneme.xlsx")
 ws = wb.active
 
-#sırayla fonksiyonları çağırma
+#fonksiyonlara gerekli değişkenleri vererek çağırma
 anaFonk(6,18)
 anaFonk(29,70)
 ozelCarpimFonk(5, 120, 19, 22, "4.03")
