@@ -1,10 +1,10 @@
 from openpyxl import Workbook, load_workbook
 
 #hangi sütun aralığını değiştireceğinin verisini alan ve o sütun aralığında X gördüğü yeri istenen formülle değiştiren kod
-def anaFonk(sutunBasla, sutunBitis):
+def anaFonk(sutunBaslangic, sutunBitis):
 
     for satir in range(5, ws.max_row):
-        for sutun in range(sutunBasla, sutunBitis):
+        for sutun in range(sutunBaslangic, sutunBitis):
             if(str(ws.cell(satir, sutun).value) == "X"):
                 ws.cell(satir, sutun).value = "=+C" + str(satir)
 
